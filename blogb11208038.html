@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>府城「轉大人」之後：台南市與地方制度法</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Outfit:wght@300;400;600&family=Zen+Old+Mincho:wght@400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'jp-paper': '#f9f6f1',
+                        'jp-ink': '#2c3e50',
+                        'jp-red': '#bc002d',
+                        'jp-gold': '#af9d7d',
+                        'jp-navy': '#1a2a3a',
+                        'jp-indigo': '#3e4e68',
+                    },
+                    fontFamily: {
+                        serif: ['"Zen Old Mincho"', '"Noto Serif TC"', 'serif'],
+                        sans: ['"Outfit"', '"Microsoft JhengHei"', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 1s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f9f6f1;
+            color: #2c3e50;
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .stamp {
+            border: 3px solid #bc002d;
+            color: #bc002d;
+            padding: 4px 8px;
+            font-weight: 900;
+            transform: rotate(-15deg);
+            display: inline-block;
+            border-radius: 4px;
+        }
+
+        .drop-cap::first-letter {
+            font-family: "Zen Old Mincho", serif;
+            font-size: 3.5rem;
+            float: left;
+            margin-right: 0.5rem;
+            line-height: 1;
+            color: #bc002d;
+            font-weight: 900;
+        }
+
+        .section-marker {
+            width: 40px;
+            height: 2px;
+            background: #bc002d;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .bg-pattern {
+            background-image: radial-gradient(#af9d7d 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            opacity: 0.1;
+        }
+
+        .gradient-heading {
+            background: linear-gradient(135deg, #1a2a3a 0%, #3e4e68 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="font-serif">
+
+    <!-- Background Pattern -->
+    <div class="fixed inset-0 bg-pattern pointer-events-none"></div>
+
+    <!-- Japanese Academy Style Header -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-jp-paper/50 to-jp-paper z-10"></div>
+            <img src='https://opal.google/board/blobs/591671d5-2793-4e27-87a0-5a5f1d7d3f3b' alt='Tainan Cityscape Banner' class="w-full h-full object-cover transform scale-105 hover:scale-100 transition-transform duration-10000 ease-linear" />
+        </div>
+
+        <div class="relative z-20 text-center px-6 animate-fade-in-up">
+            <div class="inline-block mb-6">
+                <span class="text-jp-indigo font-sans tracking-[0.3em] text-sm uppercase font-semibold">Academic Blog Report</span>
+                <div class="h-1 w-24 bg-jp-red mx-auto mt-2"></div>
+            </div>
+            
+            <h1 class="text-4xl md:text-7xl font-black mb-8 leading-tight text-jp-ink">
+                府城「<span class="text-jp-red">轉大人</span>」之後<br>
+                <span class="text-2xl md:text-4xl font-bold opacity-80 mt-4 block">台南市與《地方制度法》的恩怨情仇</span>
+            </h1>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 mt-12 font-sans">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-full border-2 border-jp-gold flex items-center justify-center font-bold text-jp-gold">台</div>
+                    <div class="text-left">
+                        <p class="text-xs text-jp-gold font-bold">STUDENT ID</p>
+                        <p class="text-lg font-semibold tracking-wider">B11208038</p>
+                    </div>
+                </div>
+                <div class="w-px h-10 bg-jp-gold/30 hidden md:block"></div>
+                <div class="text-jp-indigo italic text-lg tracking-wide">
+                    Historical Evolution & Legal Framework
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-float">
+            <div class="w-px h-24 bg-gradient-to-b from-jp-red to-transparent"></div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-20 relative">
+        
+        <!-- Intro Quote -->
+        <div class="mb-32 relative">
+            <div class="absolute -top-10 -left-10 text-8xl text-jp-gold/20 font-serif">"</div>
+            <p class="text-2xl md:text-3xl leading-relaxed text-jp-ink italic text-center drop-cap">
+                如果你走在台南街頭，聞著空氣中淡淡的糖分與古蹟的餘韻，你或許會覺得這座城市慢條斯理、充滿靈魂。但你可能不知道，這座「古都」在法律身分證上的變更，其實是一場歷經十多年、充滿政治智慧與法律博學的「轉大人」之旅。
+            </p>
+            <div class="mt-12 text-center text-jp-red font-bold tracking-widest uppercase text-sm">
+                Cultural Heritage × Legislative Reform
+            </div>
+        </div>
+
+        <!-- Section 1 -->
+        <section class="mb-32">
+            <div class="flex items-baseline gap-4 mb-10">
+                <span class="text-5xl font-black text-jp-gold opacity-30">01</span>
+                <div>
+                    <div class="section-marker"></div>
+                    <h2 class="text-3xl font-bold gradient-heading">什麼是「直轄市」？難道只是名字比較帥嗎？</h2>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-12 gap-10">
+                <div class="md:col-span-7 space-y-6 text-lg text-jp-ink">
+                    <p>
+                        在台灣的行政地圖上，「直轄市」這三個字就像是鑲了金邊的 <span class="bg-jp-gold/20 px-1 font-bold">VIP 通行證</span>。
+                    </p>
+                    <p>
+                        從《地方制度法》的角度來看，這其實是一場關於「資源分配」與「行政位階」的賽跑。在法律地位上，直轄市直接隸屬於行政院，地位與已經「虛級化」的省平起平坐。這張通行證帶來的是實打實的好處：<span class="font-bold underline decoration-jp-red/30">預算更多、人事編制更廣、都市計畫權力更大</span>。
+                    </p>
+                </div>
+                <div class="md:col-span-5">
+                    <div class="glass-card p-8 rounded-2xl border-l-4 border-jp-red h-full">
+                        <div class="stamp mb-4 uppercase">Identity Shift</div>
+                        <h4 class="font-bold mb-4">法治與地方政治的拉鋸</h4>
+                        <ul class="space-y-4 text-sm font-sans">
+                            <li class="flex gap-2">
+                                <span class="text-jp-red font-bold">●</span>
+                                <div><strong>民眾 A：</strong>「為什麼我們區長不用選？隔壁還在投鄉長？」</div>
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="text-jp-indigo font-bold">●</span>
+                                <div><strong>法律人 B：</strong>「因為行政扁平化，區長是市長欽點的官派代理人。」</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Special Bento Layout -->
+        <section class="mb-32">
+            <div class="flex items-baseline gap-4 mb-10 justify-end text-right">
+                <div>
+                    <div class="section-marker ml-auto"></div>
+                    <h2 class="text-3xl font-bold gradient-heading">突破 200 萬大關？文化魂解鎖隱藏成就！</h2>
+                </div>
+                <span class="text-5xl font-black text-jp-gold opacity-30">02</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="md:col-span-2 glass-card p-10 rounded-3xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-20 transition-opacity">
+                        <span class="text-9xl font-black vertical-text">文化</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 text-jp-red">量身打造的「文化條款」</h3>
+                    <p class="text-lg leading-loose mb-6">
+                        依照原規定，升格門檻是 200 萬人。2009 年台南縣市合併時僅有 187 萬。但台南有「文化外掛」！政府認證其身為「台灣首府」的不可取代性，修法通過。
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="px-6 py-2 bg-jp-indigo text-white font-sans text-sm rounded-full">2010.12.25 正式合體</div>
+                    </div>
+                </div>
+                <div class="bg-jp-navy p-10 rounded-3xl text-jp-paper flex flex-col justify-center text-center">
+                    <span class="text-jp-gold text-5xl font-black mb-2">187萬</span>
+                    <span class="text-xs uppercase tracking-widest opacity-60">Initial Population</span>
+                    <div class="h-px w-12 bg-jp-gold/30 mx-auto my-6"></div>
+                    <p class="font-sans text-sm leading-relaxed">
+                        當你的深度夠深時，法律也是可以為你轉彎的。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: High Contrast -->
+        <section class="mb-32 bg-jp-indigo p-12 md:p-20 rounded-[4rem] text-jp-paper relative overflow-hidden">
+            <div class="absolute top-0 right-10 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+            
+            <div class="relative z-10">
+                <div class="flex items-center gap-4 mb-12">
+                    <div class="w-12 h-px bg-jp-gold"></div>
+                    <h2 class="text-3xl font-bold">1+1 > 2 的行政整併術</h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-12">
+                    <div class="hover:translate-y-[-10px] transition-transform duration-300">
+                        <div class="text-jp-gold font-black text-4xl mb-4">路</div>
+                        <h4 class="font-bold mb-2">路更平了</h4>
+                        <p class="text-sm opacity-80 leading-relaxed">預算歸市府統一調度，不再有「一條路跨兩個鄉鎮就變兩樣情」的尷尬。</p>
+                    </div>
+                    <div class="hover:translate-y-[-10px] transition-transform duration-300">
+                        <div class="text-jp-gold font-black text-4xl mb-4">水</div>
+                        <h4 class="font-bold mb-2">水更清了</h4>
+                        <p class="text-sm opacity-80 leading-relaxed">治水計畫不再分你我，而是以流域為整體的科學規劃與預算執行。</p>
+                    </div>
+                    <div class="hover:translate-y-[-10px] transition-transform duration-300">
+                        <div class="text-jp-gold font-black text-4xl mb-4">城</div>
+                        <h4 class="font-bold mb-2">城更強了</h4>
+                        <p class="text-sm opacity-80 leading-relaxed">資源共享平台讓偏鄉也能享有市中心等級的醫療與文化教育資源。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: The Shadow -->
+        <section class="mb-32">
+            <div class="flex items-baseline gap-4 mb-10">
+                <span class="text-5xl font-black text-jp-gold opacity-30">03</span>
+                <div>
+                    <div class="section-marker"></div>
+                    <h2 class="text-3xl font-bold gradient-heading">陽光下的陰影：那些「說不出口」的成長痛</h2>
+                </div>
+            </div>
+
+            <div class="space-y-12">
+                <div class="flex flex-col md:flex-row gap-10 items-start">
+                    <div class="flex-1 glass-card p-10 rounded-2xl hover:shadow-xl transition-shadow">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-jp-red/10 text-jp-red flex items-center justify-center text-sm">壹</span>
+                            「一市兩世界」的尷尬
+                        </h3>
+                        <p class="text-jp-ink leading-relaxed">
+                            南科帶動了「溪南」起飛，房價直逼一線城市；但原本是縣治中心的「溪北」新營，卻面臨人口外流與功能萎縮。這成為了治理上的最大考驗。
+                        </p>
+                    </div>
+                    <div class="flex-1 glass-card p-10 rounded-2xl hover:shadow-xl transition-shadow">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-jp-red/10 text-jp-red flex items-center justify-center text-sm">貳</span>
+                            消失的基層民主
+                        </h3>
+                        <p class="text-jp-ink leading-relaxed">
+                            區長官派後雖然溝通直接，但也質疑失去了與居民對話的溫度。台南目前也是六都中獲配資源長期「吊車尾」的，被戲稱為「最窮的貴族」。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Future Strategy -->
+        <section class="mb-32">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-4">台南的下一步：超級聯盟</h2>
+                <p class="text-jp-gold font-sans tracking-widest uppercase text-sm font-bold">The Next Evolution</p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4 font-sans">
+                <div class="flex items-center gap-6 p-6 border-b border-jp-gold/20 group cursor-default">
+                    <span class="text-3xl font-bold text-jp-red group-hover:scale-125 transition-transform">01</span>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-lg text-jp-navy">揪團打群架</h4>
+                        <p class="text-sm text-jp-ink/70">串聯「南高屏大聯盟」，整合半導體產業廊帶。</p>
+                    </div>
+                    <div class="text-xs font-bold px-3 py-1 bg-jp-gold/10 text-jp-gold rounded">CROSS-BORDER</div>
+                </div>
+                <div class="flex items-center gap-6 p-6 border-b border-jp-gold/20 group cursor-default">
+                    <span class="text-3xl font-bold text-jp-red group-hover:scale-125 transition-transform">02</span>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-lg text-jp-navy">土地大洗牌</h4>
+                        <p class="text-sm text-jp-ink/70">配合《國土計畫法》，重新定義農業與工業區，治好發展失衡。</p>
+                    </div>
+                    <div class="text-xs font-bold px-3 py-1 bg-jp-gold/10 text-jp-gold rounded">LAND POLICY</div>
+                </div>
+                <div class="flex items-center gap-6 p-6 border-b border-jp-gold/20 group cursor-default">
+                    <span class="text-3xl font-bold text-jp-red group-hover:scale-125 transition-transform">03</span>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-lg text-jp-navy">智慧民意 2.0</h4>
+                        <p class="text-sm text-jp-ink/70">透過「參與式預算」與科技平台，讓每一分錢都能聽到民眾聲音。</p>
+                    </div>
+                    <div class="text-xs font-bold px-3 py-1 bg-jp-gold/10 text-jp-gold rounded">E-DEMOCRACY</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Conclusion -->
+        <footer class="mt-40 border-t-2 border-jp-ink pt-20 text-center relative">
+            <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-jp-paper px-8">
+                <div class="stamp">結語 CONCLUSION</div>
+            </div>
+            
+            <p class="text-xl md:text-2xl leading-loose max-w-2xl mx-auto text-jp-ink font-bold">
+                台南市的升格，其實就是一場「文化靈魂」與「法律框架」的華麗冒險。
+            </p>
+            <p class="mt-8 text-jp-ink/70 max-w-xl mx-auto italic">
+                當我們下一次在台南的小巷穿梭時，支撐這份優雅生活的，不只有牛肉湯，還有背後那一疊重重的行政法律與城市與時俱進的野心。
+            </p>
+            
+            <div class="mt-20 flex justify-center gap-8 opacity-40 grayscale hover:grayscale-0 transition-all">
+                <div class="vertical-text text-sm font-bold tracking-widest text-jp-navy">地方制度法</div>
+                <div class="vertical-text text-sm font-bold tracking-widest text-jp-red">文化古都</div>
+                <div class="vertical-text text-sm font-bold tracking-widest text-jp-indigo">行政法人</div>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // Simple Intersection Observer for animation triggers
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

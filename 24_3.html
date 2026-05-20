@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>探索會計力：學生商業思維互動平台</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f5f7fa',
+                            100: '#e4ecf5',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        /* 美化滾動條 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col transition-colors duration-300">
+
+    <!-- 頂部導航欄 -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 text-white p-2 rounded-xl">
+                    <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <span class="font-bold text-lg text-slate-900 tracking-wider block">できる人の會計力</span>
+                    <span class="text-xs text-blue-600 font-medium">學生商業與財務思維啟蒙站</span>
+                </div>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#library" class="text-slate-600 hover:text-blue-600 transition">知識資源庫</a>
+                <a href="#calculators" class="text-slate-600 hover:text-blue-600 transition">思維計算機</a>
+                <a href="#game" class="text-slate-600 hover:text-blue-600 transition">止損模擬賽</a>
+                <a href="#faq" class="text-slate-600 hover:text-blue-600 transition">學生生活 FAQ</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleDarkMode()" class="p-2 text-slate-500 hover:text-blue-600 rounded-lg transition" title="切換深色模式">
+                    <i id="theme-icon" data-lucide="moon" class="w-5 h-5"></i>
+                </button>
+                <a href="#calculators" class="bg-blue-600 text-white text-xs px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition shadow-sm">
+                    動手算算看
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄版位 (Hero Section) -->
+    <section class="relative bg-gradient-to-br from-blue-900 via-indigo-900 to-slate-900 text-white py-16 px-4 overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <span class="bg-blue-500/20 text-blue-300 text-xs px-3 py-1.5 rounded-full font-bold uppercase tracking-widest border border-blue-500/30">
+                專為未來青年領袖打造
+            </span>
+            <h1 class="text-3xl sm:text-5xl font-extrabold mt-6 tracking-tight leading-tight">
+                商業巨頭如何做決策？<br class="hidden sm:inline">
+                用 <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-300">會計力</span> 翻轉你的思維格局
+            </h1>
+            <p class="mt-6 text-slate-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+                由高橋公認會計士專業知識庫提煉。無論是參加商業個案競賽、規劃學生社團預算，還是思考個人未來成長與自我投資，掌握「會計思維」能讓你從此告別憑感覺判斷，學會像高階主管一樣精準決策！
+            </p>
+            <div class="mt-8 flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+                <a href="#library" class="bg-blue-600 text-white font-medium px-6 py-3 rounded-xl hover:bg-blue-700 transition shadow-lg shadow-blue-900/30">
+                    探索核心知識
+                </a>
+                <a href="#calculators" class="bg-white/10 hover:bg-white/20 text-white font-medium px-6 py-3 rounded-xl transition border border-white/20">
+                    體驗互動模擬器
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 關鍵知識速覽區 -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 -mt-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-2xl p-6 shadow-xl border border-slate-100 flex items-start space-x-4">
+                <div class="p-3 bg-blue-50 text-blue-600 rounded-xl">
+                    <i data-lucide="trending-up" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-800 text-base">企業估值並不神秘</h3>
+                    <p class="text-xs text-slate-500 mt-1 leading-relaxed">Cost、Market、Income 三大評價視角，學會從資本視角發掘商業真實內在價值。</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-xl border border-slate-100 flex items-start space-x-4">
+                <div class="p-3 bg-emerald-50 text-emerald-600 rounded-xl">
+                    <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-800 text-base">決策必看「機會成本」</h3>
+                    <p class="text-xs text-slate-500 mt-1 leading-relaxed">忘記已付出的沉沒成本，聚焦於未來能創造價值的抉擇，是高段決策者的第一守則。</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-xl border border-slate-100 flex items-start space-x-4">
+                <div class="p-3 bg-indigo-50 text-indigo-600 rounded-xl">
+                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-800 text-base">有溫度的內部控制</h3>
+                    <p class="text-xs text-slate-500 mt-1 leading-relaxed">「雙重檢查」是基於對夥伴的愛，而非性惡論。建立防錯機制，不讓任何人陷入罪惡。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主體內容 -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+
+        <!-- 區段一：知識資源庫 -->
+        <section id="library" class="scroll-mt-20 mb-16">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+                <div>
+                    <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight flex items-center">
+                        <span class="w-1.5 h-6 bg-blue-600 rounded-full mr-2"></span>
+                        學商者必學：會計力知識資源庫
+                    </h2>
+                    <p class="text-sm text-slate-500 mt-1">完全源自 Takahashi CPA 講堂，為大專生、高職生重新詮釋的商業會計實學</p>
+                </div>
+
+                <!-- 搜尋與篩選器 -->
+                <div class="mt-4 md:mt-0 flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 w-full md:w-auto">
+                    <div class="relative">
+                        <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                        <input type="text" id="searchInput" oninput="filterResources()" placeholder="搜尋關鍵字（如：DCF, 沉沒成本）..." 
+                               class="w-full sm:w-64 pl-9 pr-4 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 分類標籤 -->
+            <div class="flex flex-wrap gap-2 mb-6">
+                <button onclick="filterCategory('all')" class="category-btn active px-4 py-1.5 rounded-full text-xs font-medium bg-blue-600 text-white transition">
+                    全部知識
+                </button>
+                <button onclick="filterCategory('valuation')" class="category-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 border border-slate-200 hover:border-slate-300 transition">
+                    企業估值與資本成本
+                </button>
+                <button onclick="filterCategory('financial')" class="category-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 border border-slate-200 hover:border-slate-300 transition">
+                    核心財務指標 (PL/BS)
+                </button>
+                <button onclick="filterCategory('mindset')" class="category-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 border border-slate-200 hover:border-slate-300 transition">
+                    商業與決策思維
+                </button>
+                <button onclick="filterCategory('governance')" class="category-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 border border-slate-200 hover:border-slate-300 transition">
+                    公司治理與內控
+                </button>
+            </div>
+
+            <!-- 資源卡片網格 -->
+            <div id="resourceGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 卡片由 JavaScript 動態生成 -->
+            </div>
+        </section>
+
+        <!-- 區段二：互動計算機 -->
+        <section id="calculators" class="scroll-mt-20 mb-16 bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-100">
+            <div class="max-w-3xl mx-auto text-center mb-10">
+                <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full font-bold">動手即懂真理</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-2">會計力互動模擬計算器</h2>
+                <p class="text-sm text-slate-500 mt-2">輸入你好奇的參數，看公式如何轉化為真實商業場景下的預期回報或企業價值</p>
+            </div>
+
+            <!-- 計算機導覽切換 -->
+            <div class="flex justify-center border-b border-slate-200 mb-8">
+                <button onclick="switchCalc('capm')" id="btn-calc-capm" class="calc-tab-btn border-b-2 border-blue-600 text-blue-600 px-6 py-3 font-bold text-sm transition">
+                    CAPM 資本成本模擬器
+                </button>
+                <button onclick="switchCalc('multiples')" id="btn-calc-multiples" class="calc-tab-btn border-b-2 border-transparent text-slate-500 hover:text-slate-700 px-6 py-3 font-bold text-sm transition">
+                    企業倍數估值機 (EV)
+                </button>
+            </div>
+
+            <!-- 計算機 1: CAPM -->
+            <div id="calc-capm" class="calc-content grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800 flex items-center">
+                            <i data-lucide="sliders" class="w-5 h-5 mr-2 text-blue-600"></i>調整您的估計參數
+                        </h3>
+                        <p class="text-xs text-slate-400 mt-1">CAPM (資本資產定價模型) 是評估企業「股權資本成本」的核心。公式：$E(R) = R_f + \beta \times (E(R_m) - R_f)$</p>
+                    </div>
+
+                    <!-- 無風險利率 Rf -->
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold text-slate-600 mb-2">
+                            <span>無風險利率 $R_f$ (常參考10年期公債)</span>
+                            <span id="rf-val" class="text-blue-600 font-bold">1.0%</span>
+                        </div>
+                        <input type="range" id="rf-input" min="0" max="5" step="0.1" value="1.0" oninput="updateCapm()" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                        <span class="text-[10px] text-slate-400 block mt-1">目前全球低利率環境下，通常在 0.5% ~ 2% 之間徘徊。</span>
+                    </div>
+
+                    <!-- 貝塔值 Beta -->
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold text-slate-600 mb-2">
+                            <span>個股貝塔值 $\beta$ (相對大盤感應度)</span>
+                            <span id="beta-val" class="text-indigo-600 font-bold">1.0</span>
+                        </div>
+                        <input type="range" id="beta-input" min="0.3" max="2.0" step="0.05" value="1.0" oninput="updateCapm()" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
+                        <div class="flex justify-between text-[10px] text-slate-400 mt-1">
+                            <span>低風險業 (如水產、電力) 0.6</span>
+                            <span>平均 Beta = 1.0</span>
+                            <span>高感應度 (如科技、期貨) 1.25</span>
+                        </div>
+                    </div>
+
+                    <!-- 市場風險溢價 MRP -->
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold text-slate-600 mb-2">
+                            <span>市場風險溢價 (Market Risk Premium)</span>
+                            <span id="mrp-val" class="text-purple-600 font-bold">5.0%</span>
+                        </div>
+                        <input type="range" id="mrp-input" min="3.0" max="9.0" step="0.1" value="5.0" oninput="updateCapm()" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-purple-600">
+                        <span class="text-[10px] text-slate-400 block mt-1">投資人因承擔股市風險，而要求相較國債額外獲得的報酬，歷史常介於 4%~7%。</span>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-600 tracking-wider uppercase mb-4">預期股權資本成本 $E(R)$ 計算結果</h4>
+                        <div class="flex items-baseline space-x-2">
+                            <span id="capm-result" class="text-5xl font-extrabold text-blue-600 tracking-tight">6.00%</span>
+                            <span class="text-sm text-slate-400 font-medium">每年期望回報率</span>
+                        </div>
+                        
+                        <div class="mt-6 space-y-4">
+                            <div class="p-3.5 bg-white rounded-xl border border-slate-100 flex items-center space-x-3">
+                                <div class="p-2 bg-blue-50 text-blue-600 rounded-lg">
+                                    <i data-lucide="coins" class="w-4 h-4"></i>
+                                </div>
+                                <div class="text-xs">
+                                    <span class="font-bold block text-slate-700">對公司的代表意義</span>
+                                    <span class="text-slate-500">公司為了爭取股東資金，所必須承諾股東的最低「資金回報門檻（Hurdel Rate）」。</span>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 bg-white rounded-xl border border-slate-100 flex items-center space-x-3">
+                                <div id="beta-indicator-bg" class="p-2 bg-emerald-50 text-emerald-600 rounded-lg">
+                                    <i id="beta-indicator-icon" data-lucide="check-circle" class="w-4 h-4"></i>
+                                </div>
+                                <div class="text-xs">
+                                    <span class="font-bold block text-slate-700">波動特性：<span id="beta-level">波動與大盤同步</span></span>
+                                    <span id="beta-desc" class="text-slate-500">當市場上漲 10%，您的模擬企業預計也上漲 10.0%。屬於市場平均波動。</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-[11px] text-slate-400 mt-6 border-t border-slate-200 pt-4 leading-relaxed">
+                        ⚠️ **高橋會計師提醒：** CAPM 雖是最權威且國際通行的模型，但它也有其極限（極度依賴歷史 $\beta$ 與多種主觀假設），世界沒有絕對正確的單一數字，投資與決策時應多角度交叉驗證。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 計算機 2: Multiples -->
+            <div id="calc-multiples" class="calc-content hidden grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="space-y-5">
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800 flex items-center">
+                            <i data-lucide="trending-up" class="w-5 h-5 mr-2 text-indigo-600"></i>快速倍數估值模擬
+                        </h3>
+                        <p class="text-xs text-slate-400 mt-1">倍數法（Multiple Method）是實務上進行企業價值評估（Valuation）最快速、最具客觀說服力的方法之一。</p>
+                    </div>
+
+                    <!-- 本業盈利 EBITDA -->
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold text-slate-600 mb-2">
+                            <span>模擬企業 EBITDA (或本業營業利潤)</span>
+                            <span class="text-indigo-600 font-bold"><span id="ebitda-val-disp">10.0</span> 億元</span>
+                        </div>
+                        <input type="range" id="ebitda-input" min="1" max="100" step="0.5" value="10.0" oninput="updateMultiples()" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
+                        <span class="text-[10px] text-slate-400 block mt-1">EBITDA 代表息稅折舊攤銷前盈餘，可視為排除會計方法干擾之真實「本業現金創造力」。</span>
+                    </div>
+
+                    <!-- 行業倍數 -->
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold text-slate-600 mb-2">
+                            <span>行業倍數 (EV/EBITDA 倍數)</span>
+                            <span class="text-purple-600 font-bold"><span id="multiple-val-disp">8.0</span> 倍</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 mb-3">
+                            <button onclick="setIndustryMultiple(5.0, '傳產與成熟型製造業')" class="py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium rounded-xl transition">傳產製造 5.0x</button>
+                            <button onclick="setIndustryMultiple(8.0, '主流批發零售或基礎建設')" class="py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium rounded-xl transition">主流零售 8.0x</button>
+                            <button onclick="setIndustryMultiple(15.0, '快速成長與高研發科技業')" class="py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium rounded-xl transition">科技高增 15.0x</button>
+                        </div>
+                        <input type="range" id="multiple-input" min="3.0" max="25.0" step="0.5" value="8.0" oninput="updateMultiples()" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-purple-600">
+                    </div>
+
+                    <!-- 扣除淨債務計算股權價值 -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-xs font-semibold text-slate-600 block mb-1">非營業資產價值 (億元)</label>
+                            <input type="number" id="non-biz-input" value="2.0" oninput="updateMultiples()" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div>
+                            <label class="text-xs font-semibold text-slate-600 block mb-1">有息債務總額 (億元)</label>
+                            <input type="number" id="debt-input" value="5.0" oninput="updateMultiples()" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-indigo-50/50 rounded-2xl p-6 border border-indigo-100 flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-500 tracking-wider uppercase mb-3">估值層次拆解結果</h4>
+                        
+                        <div class="space-y-4">
+                            <!-- 1. 營業價值 -->
+                            <div class="flex justify-between items-center border-b border-indigo-100 pb-3">
+                                <div>
+                                    <span class="text-sm font-bold text-slate-700">模擬企業營業價值 ($EV$)</span>
+                                    <span class="text-[10px] text-slate-400 block">EBITDA × 行業倍數</span>
+                                </div>
+                                <span id="val-ev" class="text-2xl font-black text-indigo-600">80.0 億元</span>
+                            </div>
+
+                            <!-- 2. 加與減 -->
+                            <div class="text-xs space-y-2 text-slate-500 pb-3 border-b border-indigo-100">
+                                <div class="flex justify-between">
+                                    <span>(+) 非營業用資產 (如閒置資金與房地產)</span>
+                                    <span id="disp-non-biz" class="font-semibold text-slate-700">+2.0 億元</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>(-) 債權人佔有份額 (有息債務)</span>
+                                    <span id="disp-debt" class="font-semibold text-red-600">-5.0 億元</span>
+                                </div>
+                            </div>
+
+                            <!-- 3. 股權價值 -->
+                            <div class="flex justify-between items-center pt-2">
+                                <div>
+                                    <span class="text-base font-extrabold text-slate-800">最終股權價值 (Equity Value)</span>
+                                    <span class="text-[10px] text-slate-400 block">這才是真正屬於股東、買賣股票的計價核心</span>
+                                </div>
+                                <span id="val-equity" class="text-3xl font-black text-indigo-700">77.0 億元</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-[11px] text-slate-400 mt-6 border-t border-indigo-100 pt-4 leading-relaxed">
+                        💡 **學商技巧：** 在個案競賽中，當你需要快速對一家公司開出買價時，透過同行已上市公司的 EV/EBITDA 平均倍數，套入目標企業，就能快速獲得客觀合理的定價基礎。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 區段三：止損互動模擬賽 -->
+        <section id="game" class="scroll-mt-20 mb-16 bg-gradient-to-r from-slate-900 to-indigo-950 text-white rounded-3xl p-6 sm:p-10 shadow-xl overflow-hidden relative">
+            <div class="absolute -right-16 -top-16 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl"></div>
+            
+            <div class="max-w-3xl mx-auto text-center mb-8 relative z-10">
+                <span class="bg-indigo-500/20 text-indigo-300 text-xs px-3 py-1 rounded-full border border-indigo-500/30 font-bold uppercase tracking-wider">
+                    決策思維情境測驗
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold mt-3">你通過「理性止損」的考驗了嗎？</h2>
+                <p class="text-sm text-slate-300 mt-2">許多經理人在面對鉅額已支出成本時，會掉入「沉沒成本謬誤」中不捨退場。試試挑戰你的決策直覺！</p>
+            </div>
+
+            <!-- 遊戲進度、情境容器 -->
+            <div class="max-w-2xl mx-auto bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 relative z-10">
+                <div id="game-question" class="space-y-6">
+                    <!-- 由 JavaScript 動態繪製題庫 -->
+                </div>
+                
+                <div id="game-feedback" class="mt-6 hidden p-4 rounded-xl border">
+                    <!-- 回饋訊息 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 區段四：學生生活 FAQ 互動導覽 -->
+        <section id="faq" class="scroll-mt-20">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl font-extrabold text-slate-900">解答學生的真實困惑：會計思維與生活連結</h2>
+                <p class="text-sm text-slate-500 mt-2">會計不只是枯燥的借貸記帳，它能完美解釋你生活中的大小抉擇與煩惱</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-4">
+                <!-- FAQ 1 -->
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden transition shadow-sm hover:shadow-md">
+                    <button onclick="toggleFaq(1)" class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-bold text-slate-800 text-sm sm:text-base flex items-center">
+                            <span class="text-blue-500 mr-2.5 font-black">Q1.</span>
+                            「這堂通識課我已經聽了兩週，雖然很無聊，但都已經付學費了，應該撐到學期末吧？」
+                        </span>
+                        <i id="faq-icon-1" data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transform transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-1" class="hidden px-6 pb-5 text-xs sm:text-sm text-slate-500 border-t border-slate-100 pt-3 bg-slate-50/50 leading-relaxed">
+                        💡 **CPA 高橋指出：這正是典型「沉沒成本 (Sunk Cost)」的陷阱！**<br><br>
+                        你所繳交的學費是「無論退不退選都無法回收的費用」（沉沒成本）。在決定要不要退選時，**學費的多寡不應干擾你的判斷**。<br>
+                        理性決策法應是：評估「留下這堂無聊課的時間（時間成本）」與「退選後，去圖書館讀自己喜歡的書，或參加有意義社團（機會成本）」哪一個價值更大。
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden transition shadow-sm hover:shadow-md">
+                    <button onclick="toggleFaq(2)" class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-bold text-slate-800 text-sm sm:text-base flex items-center">
+                            <span class="text-blue-500 mr-2.5 font-black">Q2.</span>
+                            「我想參加商業競賽或自行創業，會計真的那麼重要嗎？交給財金系的同學不就好了？」
+                        </span>
+                        <i id="faq-icon-2" data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transform transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-2" class="hidden px-6 pb-5 text-xs sm:text-sm text-slate-500 border-t border-slate-100 pt-3 bg-slate-50/50 leading-relaxed">
+                        💡 **會計是商業的「共同語言」！**<br><br>
+                        無論你是負責行銷還是工程開發，如果你聽不懂會計，你就無法與團隊的高階主管或投資人對話。<br>
+                        高橋會計師提過：「如果行銷人員懂得讀懂客戶的損益表（PL），就能一眼看出客戶的關鍵痛點在哪裡（是利潤率不足？還是銷管費過高？），進而提出最直擊核心的行銷提案，這才是最強的行銷。」
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden transition shadow-sm hover:shadow-md">
+                    <button onclick="toggleFaq(3)" class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-bold text-slate-800 text-sm sm:text-base flex items-center">
+                            <span class="text-blue-500 mr-2.5 font-black">Q3.</span>
+                            「為什麼高橋會計師說『雙重檢查（Double Check）』是出於愛，而不是不信任？」
+                        </span>
+                        <i id="faq-icon-3" data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transform transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-3" class="hidden px-6 pb-5 text-xs sm:text-sm text-slate-500 border-t border-slate-100 pt-3 bg-slate-50/50 leading-relaxed">
+                        💡 **這涉及內部控制（Internal Control）的哲學！**<br><br>
+                        許多人覺得「被雙重檢查」意味著公司不信任自己，感到壓力。<br>
+                        但高橋會計師從京瓷創辦人稻盛和夫的《實學》中指出：**「雙重檢查是維護人和組織健全的保護機制。」**<br>
+                        人往往會在一時的衝動或脆弱下（例如面臨重大變故需要巨款）犯錯。如果制度設計完美，讓犯錯是不可能發生的，那就能保護每位夥伴不陷入罪名、不身敗名裂。這才是對夥伴最深沉、溫柔的「愛護」。
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 頁尾 -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <div class="flex items-center justify-center space-x-2 text-white">
+                <i data-lucide="graduation-cap" class="w-6 h-6 text-blue-500"></i>
+                <span class="font-black tracking-wider text-base">CPA Takahashi Accounting Mindset</span>
+            </div>
+            <p class="text-xs max-w-xl mx-auto leading-relaxed text-slate-500">
+                本學習平台之核心知識皆取材自公認會計士高橋昌也之教學資源庫（涵蓋 CAPM、企業估值三大法、EBITDA倍數估值、ROIC與ROE分析等專業論述），專為學生教育啟蒙與學術研究設計。
+            </p>
+            <div class="text-xs text-slate-600 border-t border-slate-800 pt-6">
+                &copy; 2026 學生會計力與商業思維啟蒙站. All Rights Reserved. Designed for future builders.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript 業務邏輯與內容 -->
+    <script>
+        // 初始化 Lucide 圖標
+        lucide.createIcons();
+
+        // 知識資源庫數據
+        const resourcesData = [
+            {
+                id: 1,
+                title: "企業估值的三大基本法",
+                category: "valuation",
+                badge: "大賽常用",
+                desc: "解密任何商業估計的核心！估值有三大基本視角：コスト（成本法/看過去資產）、市場（マーケットアプローチ/看同業現在表現）、收益（インカムアプローチ/折現未來）。",
+                content: "1. **成本法 (Cost Approach)**：主要以資產負債表（BS）淨資產為基準，具有客觀性，常採用修正淨資產法。\n2. **市場法 (Market Approach)**：參考股市上類似規模與行業的上市公司之估值倍數（如 EV/EBITDA, PER）評估，具高說服力。\n3. **收益法 (Income Approach)**：最著名的代表為 DCF 法。根據預測未來的自由現金流，並以特定折現率折為現值以求估值。是最具學術與理論完美性，但也最具主觀預測風險的方法。",
+                readTime: "4 min"
+            },
+            {
+                id: 2,
+                title: "倍數法 (Multiples) 與行業基準",
+                category: "valuation",
+                badge: "快速上手",
+                desc: "如何在一分鐘內粗估一家公司的買賣底價？學會掌握 EV/EBITDA 與 8 倍黃金基準律。",
+                content: "實務上，最常用的倍數法指標是 **EV/EBITDA 倍數**。EBITDA 相比營業利潤排除了折舊攤銷等會計政策差異，適合國際比較。\n- **經驗基準 (Bench Mark)**：通常，傳統與一般主流成熟行業的 EV/EBITDA 倍數中位數多落於 **8倍 (8x)** 附近。\n- **PER 與 PBR**：當期純利與純資產的估值指標（PER 歷史基準一般約為 15倍；PBR 淨資產價值歷史基準一般約為 1倍）。",
+                readTime: "3 min"
+            },
+            {
+                id: 3,
+                title: "CAPM 模型與股權資本成本",
+                category: "valuation",
+                badge: "深度精髓",
+                desc: "資本也有代價！學會用 CAPM 模型計算股權資本成本，掌握風險溢價與貝塔值波動的連鎖反應。",
+                content: "投資人的預期報酬率，就是企業的資金成本。\n**公式**：$E(R) = R_f + \\beta \\times MRP$\n- **無風險利率 ($R_f$)**：如無風險國家公債殖利率。\n- **貝塔值 (Beta, $\\beta$)**：表示個股對於大盤波動的敏感度。Beta < 1.0 的產業（如生活必需品、水電、交通基礎設施）波動較平緩；Beta > 1.0 的產業（如高科技研發、證券期貨）波動更劇烈。\n- **市場風險溢價 (MRP)**：因承擔股市風險，相對公債要求增加的溢價，通常介於 4%~7%。",
+                readTime: "5 min"
+            },
+            {
+                id: 4,
+                title: "決策天平：沉沒成本與機會成本",
+                category: "mindset",
+                badge: "思維必修",
+                desc: "已經花了的就當作沉沒，未來的選擇看機會成本。拒絕「都努力這麼久了」的情感勒索，理性抉擇！",
+                content: "這對決策具有決定性影響：\n- **沉沒成本 (Sunk Cost)**：已經支出、無論做什麼決定都絕對無法回收的支出。在決策時**「必須徹底忽略」**！\n- **機會成本/機會費用 (Opportunity Cost)**：當你做出某項選擇時，在所放棄的其他最優選項中所能獲得的最大潛在回報。進行新項目評估時**「必須將其視為一筆成本」**予以通盤考量。\n*例如：在閒置辦公室改建案中，改建後放棄了原本的「出租機會」就是一筆機會費用。*",
+                readTime: "4 min"
+            },
+            {
+                id: 5,
+                title: "ROIC、ROE 與 ROA 的核心差異",
+                category: "financial",
+                badge: "指標解析",
+                desc: "老闆最愛講的「資金回報率」到底差在哪？ROIC 才是排除債務操縱的真正本業之王。",
+                content: "1. **ROE (股權報酬率)**：當期純利 / 股本。這是股東最關心的獲利，但**缺點在於能被財務槓桿操縱**！企業若大量借債來買回庫藏股以壓縮淨資產，ROE 就會大幅攀升。\n2. **ROIC (投入資本回報率)**：稅後營業利潤 / 投入資本（包含有息債務與股本）。不受融資組合（槓桿）影響，能更真實地刻劃本業資本的使用效率。在經營管理（KPI）中，ROIC 遠勝 ROE。\n3. **ROA (資產報酬率)**：純利 / 總資產。計算簡單，可廣泛跨行業比較，但無對應資本成本之概念，較難用於評價投資抉擇之合理性。",
+                readTime: "5 min"
+            },
+            {
+                id: 6,
+                title: "公司治理與內部控制的「愛之哲學」",
+                category: "governance",
+                badge: "管理哲學",
+                desc: "雙重檢查（Double-check）是繁雜刁難，還是出於善意？聽高橋會計師娓娓道來稻盛和夫《實學》的精髓。",
+                content: "內部控制與雙重檢查的目的，常被誤解為「不信任員工」。然而，實學的底層邏輯是**基於對員工的熱愛與保護**。\n人類是脆弱的，在遭逢變故、高壓等情境下可能會動搖犯錯。如果制度的建立上，設計出**「極度嚴密、讓犯錯是不可能發生」**的雙重確認機制，就能將出錯率降到最低，保護同仁在道德與生涯安全上永不墜崖。好的治理，本質是守護人心的愛護機制。",
+                readTime: "4 min"
+            }
+        ];
+
+        // 當前分類
+        let currentCategory = 'all';
+
+        // 渲染資源卡片
+        function renderResources(data) {
+            const grid = document.getElementById('resourceGrid');
+            grid.innerHTML = '';
+
+            if (data.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-12 text-center text-slate-400">
+                        <i data-lucide="info" class="w-12 h-12 mx-auto mb-3 opacity-50"></i>
+                        <p class="text-sm">找不到符合搜尋條件的商業會計知識卡片...</p>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group";
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-blue-50 text-blue-600 text-[10px] px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">${item.badge}</span>
+                            <span class="text-slate-400 text-xs flex items-center">
+                                <i data-lucide="clock" class="w-3.5 h-3.5 mr-1"></i> ${item.readTime}
+                            </span>
+                        </div>
+                        <h3 class="font-extrabold text-slate-800 text-lg group-hover:text-blue-600 transition duration-300">${item.title}</h3>
+                        <p class="text-xs text-slate-500 mt-2.5 leading-relaxed">${item.desc}</p>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                        <button onclick="openModal(${item.id})" class="text-blue-600 hover:text-blue-700 text-xs font-bold flex items-center transition">
+                            進入完整章節 <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        // 分類篩選
+        function filterCategory(category) {
+            currentCategory = category;
+            
+            // 更新按鈕 active 樣式
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => {
+                btn.className = "category-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 border border-slate-200 hover:border-slate-300 transition";
+            });
+
+            const activeBtn = event.target;
+            activeBtn.className = "category-btn active px-4 py-1.5 rounded-full text-xs font-medium bg-blue-600 text-white transition";
+
+            filterResources();
+        }
+
+        // 搜尋與篩選邏輯
+        function filterResources() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            
+            const filtered = resourcesData.filter(item => {
+                const matchesCategory = (currentCategory === 'all' || item.category === currentCategory);
+                const matchesSearch = item.title.toLowerCase().includes(query) || 
+                                      item.desc.toLowerCase().includes(query) || 
+                                      item.content.toLowerCase().includes(query);
+                return matchesCategory && matchesSearch;
+            });
+
+            renderResources(filtered);
+        }
+
+        // 動態生成模態框 (Modal)
+        function openModal(id) {
+            const item = resourcesData.find(r => r.id === id);
+            if (!item) return;
+
+            // 格式化 markdown 的簡單處理
+            let formattedContent = item.content
+                .replace(/\n/g, '<br>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+            const modalHtml = `
+                <div id="infoModal" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                        <div class="fixed inset-0 bg-slate-900/60 transition-opacity" aria-hidden="true" onclick="closeModal()"></div>
+                        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                        
+                        <div class="inline-block align-bottom bg-white rounded-3xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full border border-slate-100">
+                            <div class="bg-gradient-to-r from-blue-950 to-indigo-900 px-6 sm:px-8 py-6 text-white flex justify-between items-start">
+                                <div>
+                                    <span class="text-blue-300 text-[10px] font-bold tracking-wider uppercase bg-white/10 px-2.5 py-1 rounded-full">${item.badge}</span>
+                                    <h3 class="text-xl font-bold mt-2" id="modal-title">${item.title}</h3>
+                                </div>
+                                <button onclick="closeModal()" class="text-white/70 hover:text-white transition p-1.5 hover:bg-white/10 rounded-lg">
+                                    <i data-lucide="x" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                            <div class="bg-white px-6 sm:px-8 py-6 max-h-[60vh] overflow-y-auto">
+                                <p class="text-sm font-semibold text-slate-700 bg-slate-50 p-4 rounded-2xl border-l-4 border-blue-500 leading-relaxed mb-6">
+                                    ${item.desc}
+                                </p>
+                                <div class="text-xs sm:text-sm text-slate-600 leading-relaxed space-y-4">
+                                    ${formattedContent}
+                                </div>
+                            </div>
+                            <div class="bg-slate-50 px-6 sm:px-8 py-4 flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0 border-t border-slate-100">
+                                <span class="text-[11px] text-slate-400">研讀此會計學章節，建立更宏觀的商業眼界</span>
+                                <button onclick="closeModal()" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white text-xs px-5 py-2.5 rounded-xl font-bold transition">
+                                    我已讀懂此觀念
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', modalHtml);
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('infoModal');
+            if (modal) modal.remove();
+        }
+
+        // FAQ 展開折疊
+        function toggleFaq(id) {
+            const ans = document.getElementById(`faq-ans-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            if (ans.classList.contains('hidden')) {
+                ans.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                ans.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        // 切換深色模式 (僅為模擬演示)
+        function toggleDarkMode() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            const icon = document.getElementById('theme-icon');
+            if (isDark) {
+                icon.setAttribute('data-lucide', 'sun');
+                document.body.classList.replace('bg-slate-50', 'bg-slate-900');
+                document.body.classList.replace('text-slate-800', 'text-slate-100');
+            } else {
+                icon.setAttribute('data-lucide', 'moon');
+                document.body.classList.replace('bg-slate-900', 'bg-slate-50');
+                document.body.classList.replace('text-slate-100', 'text-slate-800');
+            }
+            lucide.createIcons();
+        }
+
+        // 切換計算機面板
+        function switchCalc(calcName) {
+            const tabs = document.querySelectorAll('.calc-tab-btn');
+            tabs.forEach(tab => {
+                tab.className = "calc-tab-btn border-b-2 border-transparent text-slate-500 hover:text-slate-700 px-6 py-3 font-bold text-sm transition";
+            });
+
+            const activeTab = document.getElementById(`btn-calc-${calcName}`);
+            activeTab.className = "calc-tab-btn border-b-2 border-blue-600 text-blue-600 px-6 py-3 font-bold text-sm transition";
+
+            const modules = document.querySelectorAll('.calc-content');
+            modules.forEach(m => m.classList.add('hidden'));
+
+            const activeModule = document.getElementById(`calc-${calcName}`);
+            activeModule.classList.remove('hidden');
+        }
+
+        // 商業思維計算機 1: CAPM 計算邏輯
+        function updateCapm() {
+            const rf = parseFloat(document.getElementById('rf-input').value);
+            const beta = parseFloat(document.getElementById('beta-input').value);
+            const mrp = parseFloat(document.getElementById('mrp-input').value);
+
+            // 更新顯示數值
+            document.getElementById('rf-val').innerText = `${rf.toFixed(1)}%`;
+            document.getElementById('beta-val').innerText = `${beta.toFixed(2)}`;
+            document.getElementById('mrp-val').innerText = `${mrp.toFixed(1)}%`;
+
+            // 計算預期收益率
+            const expectedReturn = rf + (beta * mrp);
+            document.getElementById('capm-result').innerText = `${expectedReturn.toFixed(2)}%`;
+
+            // 更新 Beta 行業分析與描述
+            const levelSpan = document.getElementById('beta-level');
+            const descSpan = document.getElementById('beta-desc');
+            const bgDiv = document.getElementById('beta-indicator-bg');
+            const iconEl = document.getElementById('beta-indicator-icon');
+
+            let industryClass = "波動與大盤同步";
+            let description = `當市場上漲 10%，您的模擬企業預計上漲 ${ (beta * 10).toFixed(1) }%。屬於平均市場波動。`;
+
+            if (beta < 0.8) {
+                industryClass = "防守穩健型產業 (水產農林、民生水電)";
+                bgDiv.className = "p-2 bg-green-50 text-green-600 rounded-lg";
+                iconEl.setAttribute('data-lucide', 'shield');
+            } else if (beta > 1.2) {
+                industryClass = "高波動成長型產業 (高科技研發、證券期貨)";
+                bgDiv.className = "p-2 bg-red-50 text-red-600 rounded-lg";
+                iconEl.setAttribute('data-lucide', 'zap');
+            } else {
+                bgDiv.className = "p-2 bg-blue-50 text-blue-600 rounded-lg";
+                iconEl.setAttribute('data-lucide', 'check-circle');
+            }
+
+            levelSpan.innerText = industryClass;
+            descSpan.innerText = description;
+            lucide.createIcons();
+        }
+
+        // 快速倍數估值計算
+        function updateMultiples() {
+            const ebitda = parseFloat(document.getElementById('ebitda-input').value);
+            const multiple = parseFloat(document.getElementById('multiple-input').value);
+            const nonBiz = parseFloat(document.getElementById('non-biz-input').value) || 0;
+            const debt = parseFloat(document.getElementById('debt-input').value) || 0;
+
+            document.getElementById('ebitda-val-disp').innerText = ebitda.toFixed(1);
+            document.getElementById('multiple-val-disp').innerText = multiple.toFixed(1);
+
+            const ev = ebitda * multiple;
+            const equity = ev + nonBiz - debt;
+
+            document.getElementById('val-ev').innerText = `${ev.toFixed(1)} 億元`;
+            document.getElementById('disp-non-biz').innerText = `+${nonBiz.toFixed(1)} 億元`;
+            document.getElementById('disp-debt').innerText = `-${debt.toFixed(1)} 億元`;
+            document.getElementById('val-equity').innerText = `${equity.toFixed(1)} 億元`;
+        }
+
+        function setIndustryMultiple(value, name) {
+            document.getElementById('multiple-input').value = value;
+            updateMultiples();
+        }
+
+        // 決策思維情境互動測驗 (Sunk Cost Game)
+        const gameQuestions = [
+            {
+                id: 1,
+                title: "【抉擇：拉贊助卡關的校園園遊會】",
+                situation: "你的社團籌備園遊會，已經花費了 3 萬元設計並印刷不退款的海報與宣傳單。此時，突然收到暴雨警報，若是明天照常舉辦，預估最多只能取得 5,000 元利潤；若是選擇改在下週末租用室內場地舉辦，需要『額外支付 1 萬元場租』，但室內場地預估可以帶來高達 2 萬元的利潤。此時，你該照常舉辦，還是改期？",
+                choices: [
+                    {
+                        text: "照常舉辦。因為改期要額外付1萬元場租，太不划算了！而且海報3萬都付了不能浪費！",
+                        isCorrect: false,
+                        feedback: "❌ 答錯了！你掉入了「沉沒成本謬誤」！海報的 3 萬元不管辦不辦都拿不回來，是『沉沒成本』。此時應該單純比較改期的『淨收益（2萬利潤 - 1萬場租 = 1萬）』與照常舉辦的『淨收益（5千）』。改期的理智價值更高！"
+                    },
+                    {
+                        text: "果斷改期！忽略已經花費的3萬元海報，把未來的改期場租1萬當作新投資，爭取淨賺1萬元！",
+                        isCorrect: true,
+                        feedback: "🎉 答對了！恭喜你擁有理性經理人的核心特質！海報的 3 萬是已經無法回收的『沉沒成本』。改辦室內的增額投資（機會/機會費用）是 1 萬，回報為 2 萬，淨回報為 1 萬，大於照常舉辦的 5,000 元。理性的決策者永遠只看未來！"
+                    }
+                ]
+            },
+            {
+                id: 2,
+                title: "【抉擇：商業案例競賽的時間投資】",
+                situation: "你和團隊參加一場大型商業案例競賽，已經熬夜工作了 3 週、完成了一份厚重的傳統零售轉型報告（估計拿佳作機會很大）。此時，你們在決賽前 2 天突然發現一項全新的科技技術漏洞，若能推翻前 3 週的所有努力、重新撰寫一份以最新技術為核心的方案，極有機會衝刺全國冠軍。團隊成員感到疲憊且捨不得前 3 週的心血，你該怎麼做？",
+                choices: [
+                    {
+                        text: "維持原案。我們已經熬夜 3 週了，如果全部丟掉重寫，這 3 週的心血就白費了，太不甘心！",
+                        isCorrect: false,
+                        feedback: "❌ 答錯了！前 3 週的時間與勞力（雖然無法以金錢量化）依舊是不可逆的『沉沒成本』。抱守著不適用的方案，只會限制未來奪冠的機會。這也是「沉沒成本謬誤」的一種表現！"
+                    },
+                    {
+                        text: "全體同意，熱血重寫！將前3週當成累積經驗與試錯，忘掉疲憊，勇敢爭取最高勝率！",
+                        isCorrect: true,
+                        feedback: "🎉 答對了！這在 M&A 談判或企業研發中止決策中非常關鍵。不因已經投入的勞力而將就。高橋會計師提過：『不論過去耗費多少精力，當發現更優解時，忘記過去、大膽重來才是真正的專業表現。』"
+                    }
+                ]
+            }
+        ];
+
+        let currentGameIndex = 0;
+
+        function renderGame() {
+            const q = gameQuestions[currentGameIndex];
+            const container = document.getElementById('game-question');
+            const feedbackBox = document.getElementById('game-feedback');
+            
+            feedbackBox.classList.add('hidden');
+            
+            container.innerHTML = `
+                <div class="flex justify-between items-center text-xs text-slate-400">
+                    <span>關卡 ${currentGameIndex + 1} / ${gameQuestions.length}</span>
+                    <span class="font-bold text-indigo-400">會計思維挑戰賽</span>
+                </div>
+                <h3 class="text-lg sm:text-xl font-bold text-white">${q.title}</h3>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed bg-white/5 p-4 rounded-xl border border-white/5">${q.situation}</p>
+                <div class="space-y-3">
+                    ${q.choices.map((choice, idx) => `
+                        <button onclick="submitChoice(${idx})" class="w-full text-left p-4 bg-white/10 hover:bg-white/15 text-xs sm:text-sm font-semibold rounded-xl border border-white/10 transition duration-300 flex items-start space-x-3">
+                            <span class="bg-blue-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px] shrink-0 mt-0.5">${idx === 0 ? 'A' : 'B'}</span>
+                            <span>${choice.text}</span>
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function submitChoice(choiceIdx) {
+            const q = gameQuestions[currentGameIndex];
+            const choice = q.choices[choiceIdx];
+            const feedbackBox = document.getElementById('game-feedback');
+
+            feedbackBox.classList.remove('hidden');
+            
+            if (choice.isCorrect) {
+                feedbackBox.className = "mt-6 p-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-200 text-xs sm:text-sm leading-relaxed";
+                feedbackBox.innerHTML = `
+                    <div class="flex items-center space-x-2 font-bold mb-2 text-emerald-400">
+                        <i data-lucide="check-circle" class="w-5 h-5"></i>
+                        <span>完全正確！</span>
+                    </div>
+                    ${choice.feedback}
+                    ${currentGameIndex < gameQuestions.length - 1 ? `
+                        <button onclick="nextQuestion()" class="mt-4 bg-emerald-600 hover:bg-emerald-700 text-white text-xs px-4 py-2 rounded-lg font-bold transition">
+                            進入下一題 <i data-lucide="arrow-right" class="w-4 h-4 inline-block ml-1"></i>
+                        </button>
+                    ` : `
+                        <div class="mt-4 text-xs font-bold text-yellow-400 flex items-center">
+                            <i data-lucide="award" class="w-5 h-5 mr-1.5"></i>
+                            恭喜你！已完成所有沉沒成本測驗，你已經具備高階財務思維格局！
+                        </div>
+                    `}
+                `;
+            } else {
+                feedbackBox.className = "mt-6 p-4 rounded-xl border border-red-500/30 bg-red-500/10 text-red-200 text-xs sm:text-sm leading-relaxed";
+                feedbackBox.innerHTML = `
+                    <div class="flex items-center space-x-2 font-bold mb-2 text-red-400">
+                        <i data-lucide="x-circle" class="w-5 h-5"></i>
+                        <span>再想想看...</span>
+                    </div>
+                    ${choice.feedback}
+                `;
+            }
+            lucide.createIcons();
+        }
+
+        function nextQuestion() {
+            currentGameIndex++;
+            renderGame();
+        }
+
+        // 初始化
+        window.onload = function() {
+            renderResources(resourcesData);
+            updateCapm();
+            updateMultiples();
+            renderGame();
+        };
+    </script>
+</body>
+</html>
